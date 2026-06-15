@@ -1,5 +1,7 @@
 # Báo cáo Giải pháp Lab 13 - AI Observability & Optimization
 
+![Minh chứng 100 điểm vòng Public](public_phase_score_phase.png)
+
 Tài liệu này tổng hợp toàn bộ quá trình tối ưu hóa Agent, các lỗi đã chẩn đoán và cách chỉnh sửa mã nguồn để đạt được **120/120 điểm (status ok=120)** trong vòng Public Phase.
 
 ---
