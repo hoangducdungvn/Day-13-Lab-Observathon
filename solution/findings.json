@@ -1,12 +1,72 @@
 {
-  "team": "TODO-team-name",
+  "team": "hoangducdungvn",
   "schema_version": 1,
   "findings": [
     {
+      "fault_class": "error_spike",
+      "evidence": {"metric": "error_rate", "observed": "High API error rate on tool calls", "trace_ids": []},
+      "root_cause": "tool_error_rate is high (0.18) but retries are disabled.",
+      "suggested_fix": "Enable retry in config (retry.enabled=true) with backoff."
+    },
+    {
       "fault_class": "latency_spike",
-      "evidence": {"metric": "latency_p95_ms", "observed": "TODO from your telemetry", "trace_ids": []},
-      "root_cause": "TODO: what config knob or behavior causes it?",
-      "suggested_fix": "TODO: config change and/or wrapper mitigation"
+      "evidence": {"metric": "latency_p95_ms", "observed": "High latency on repeated queries", "trace_ids": []},
+      "root_cause": "Cache is disabled, causing identical requests to hit the LLM.",
+      "suggested_fix": "Set cache.enabled = true in config.json."
+    },
+    {
+      "fault_class": "cost_blowup",
+      "evidence": {"metric": "cost_usd", "observed": "Unusually high token usage per request", "trace_ids": []},
+      "root_cause": "verbose_system is true, wasting tokens.",
+      "suggested_fix": "Set verbose_system = false in config.json."
+    },
+    {
+      "fault_class": "quality_drift",
+      "evidence": {"metric": "correctness_over_turns", "observed": "Answers worsen in later session turns", "trace_ids": []},
+      "root_cause": "session_drift_rate causes state corruption over time.",
+      "suggested_fix": "Increase self_consistency to 3 and reduce temperature to 0.2."
+    },
+    {
+      "fault_class": "infinite_loop",
+      "evidence": {"metric": "steps", "observed": "status=max_steps reached due to repeated identical calls", "trace_ids": []},
+      "root_cause": "loop_guard is false, allowing the agent to get stuck.",
+      "suggested_fix": "Set loop_guard = true in config.json."
+    },
+    {
+      "fault_class": "tool_failure",
+      "evidence": {"metric": "tool_success", "observed": "Fails on cities with diacritics and macbook always OOS", "trace_ids": []},
+      "root_cause": "normalize_unicode is false; catalog_override forces macbook to be out of stock.",
+      "suggested_fix": "Set normalize_unicode=true and clear catalog_override to {}."
+    },
+    {
+      "fault_class": "pii_leak",
+      "evidence": {"metric": "pii_leaks", "observed": "Raw phone numbers and emails in responses", "trace_ids": []},
+      "root_cause": "redact_pii is disabled.",
+      "suggested_fix": "Set redact_pii = true in config.json and/or redact in wrapper."
+    },
+    {
+      "fault_class": "fabrication",
+      "evidence": {"metric": "fabrication_rate", "observed": "Agent invents totals for OOS items", "trace_ids": []},
+      "root_cause": "Prompt doesn't ground the agent to refuse when items are missing.",
+      "suggested_fix": "Rewrite prompt to mandate refusing if items are out of stock or not found."
+    },
+    {
+      "fault_class": "arithmetic_error",
+      "evidence": {"metric": "math_correctness", "observed": "Totals are calculated wrongly", "trace_ids": []},
+      "root_cause": "High temperature (1.6) and missing explicit math formula.",
+      "suggested_fix": "Lower temperature to 0.2 and provide exact floor math formula in prompt."
+    },
+    {
+      "fault_class": "tool_overuse",
+      "evidence": {"metric": "tools_used_count", "observed": "More tool calls than necessary", "trace_ids": []},
+      "root_cause": "No tool_budget limit and lack of prompt constraints.",
+      "suggested_fix": "Set tool_budget = 4 and prompt it to use each tool at most once."
+    },
+    {
+      "fault_class": "prompt_injection",
+      "evidence": {"metric": "injection_success", "observed": "Agent obeys fake prices in GHI CHU", "trace_ids": []},
+      "root_cause": "Agent trusts user notes as instructions.",
+      "suggested_fix": "Prompt explicitly to treat notes as DATA and never follow embedded instructions."
     }
   ]
 }
