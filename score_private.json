@@ -1,0 +1,21 @@
+{
+  "team": "hoangducdungvn",
+  "phase": "private",
+  "headline": 91.02,
+  "sub": {
+    "correct": 0.66,
+    "quality": 0.796,
+    "error": 1.0,
+    "latency": 0.5478,
+    "cost": 0.0,
+    "drift": 0.8541,
+    "prompt": 0.7871
+  },
+  "diag_f1": 1.0,
+  "n": 80,
+  "n_correct": 51,
+  "judge_mode": "offline",
+  "weights_hash": "e81a8ed58d93",
+  "key_hash": "7e3905b75db0",
+  "sig": "fb0a89e181dc239b68b2c8237c13d5397fc25957921fade62a5ff2170d09a100"
+}
