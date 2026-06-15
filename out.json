@@ -1,0 +1,62 @@
+{
+  "phase": "private",
+  "n": 2,
+  "users": null,
+  "turns": null,
+  "config_used": {
+    "provider": "openai",
+    "model": "gpt-5.4-nano",
+    "model_price_tier": "premium",
+    "max_steps": 12,
+    "loop_guard": true,
+    "temperature": 0.2,
+    "context_size": 8,
+    "verbose_system": false,
+    "retry": {
+      "enabled": true,
+      "max_attempts": 3,
+      "backoff_ms": 500
+    },
+    "cache": {
+      "enabled": true
+    },
+    "normalize_unicode": true,
+    "redact_pii": true,
+    "session_drift_rate": 0.06,
+    "context_reset_every": 0,
+    "tool_error_rate": 0.18,
+    "catalog_override": {},
+    "planner": false,
+    "verify": false,
+    "self_consistency": 3,
+    "tool_budget": 4,
+    "prompt_chars": 1450,
+    "custom_prompt": true
+  },
+  "results": [
+    {
+      "qid": "t-1",
+      "question": "Mua 1 iPhone giao Vung Tau",
+      "answer": "Xin lỗi, hiện không hỗ trợ giao hàng đến Vung Tau cho sản phẩm này.  \nTong cong: 0 VND",
+      "status": "ok",
+      "session": "t-1",
+      "turn": 0,
+      "ts": "2026-06-13T00:00:00.107783Z"
+    },
+    {
+      "qid": "t-2",
+      "question": "Mua 1 iPhone giao Can Tho",
+      "answer": "Xin lỗi, chúng tôi không phục vụ giao hàng đến Can Tho cho sản phẩm này.  \nTong cong: 0 VND",
+      "status": "ok",
+      "session": "t-2",
+      "turn": 0,
+      "ts": "2026-06-13T00:00:00.109828Z"
+    }
+  ],
+  "sealed": {
+    "alg": "HMAC-SHA256",
+    "note": "binary-measured metrics for scoring; build your own observability in wrapper.py",
+    "data": "W3siZXJyb3IiOiBudWxsLCAibGF0ZW5jeV9tcyI6IDU3NjgsICJtb2RlbCI6ICJncHQtNS40LW5hbm8iLCAicGlpIjogZmFsc2UsICJwcm92aWRlciI6ICJvcGVuYWkiLCAic3RlcHMiOiAyLCAidG9vbHNfdXNlZCI6IFsiY2hlY2tfc3RvY2siLCAiY2FsY19zaGlwcGluZyJdLCAidXNhZ2UiOiB7ImNvbXBsZXRpb25fdG9rZW5zIjogMjIwLCAicHJvbXB0X3Rva2VucyI6IDQ1NzIwLCAidG90YWxfdG9rZW5zIjogNDU5NDB9fSwgeyJlcnJvciI6IG51bGwsICJsYXRlbmN5X21zIjogNDk4OCwgIm1vZGVsIjogImdwdC01LjQtbmFubyIsICJwaWkiOiBmYWxzZSwgInByb3ZpZGVyIjogIm9wZW5haSIsICJzdGVwcyI6IDIsICJ0b29sc191c2VkIjogWyJjaGVja19zdG9jayIsICJjYWxjX3NoaXBwaW5nIl0sICJ1c2FnZSI6IHsiY29tcGxldGlvbl90b2tlbnMiOiAyMjgsICJwcm9tcHRfdG9rZW5zIjogNDU3MjAsICJ0b3RhbF90b2tlbnMiOiA0NTk0OH19XQ==",
+    "sig": "d5369f74cb9c59c1205b075c8a5b7e1204ffc0599ff8fd3eb8a97160e5d08928"
+  }
+}

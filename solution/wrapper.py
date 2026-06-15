@@ -11,6 +11,9 @@ def mitigate(call_next, question, config, context):
     try:
         t0 = time.time()
         result = call_next(question, config)
+        import json
+        with open("debug_dump.jsonl", "a", encoding="utf-8") as f:
+            f.write(json.dumps(result, default=str) + "\n")
         meta = result.get("meta", {})
         usage = meta.get("usage", {})
         
